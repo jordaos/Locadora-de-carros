@@ -1,11 +1,14 @@
 package br.com.ufc.locadora.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Digits;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -23,14 +26,17 @@ public class Aluguel {
     @ManyToOne
 	private Cliente cliente;
 	
-	@Digits(integer=2, fraction=0)
-	@NotNull
-	private int tempo;//em dias
+	@Temporal(TemporalType.DATE)
+    private Date data_inicio;
 	
-	public Aluguel(Carro carro, Cliente cliente, int tempo){
+	@Temporal(TemporalType.DATE)
+    private Date data_fim;
+	
+	public Aluguel(Carro carro, Cliente cliente, Date data_inicio, Date data_fim){
 		this.carro = carro;
 		this.cliente = cliente;
-		this.tempo = tempo;
+		this.data_inicio = data_inicio;
+		this.data_fim = data_fim;
 	}
 	public Aluguel(){}
 	public Long getId() {
@@ -51,10 +57,17 @@ public class Aluguel {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	public int getTempo() {
-		return tempo;
+	public Date getData_inicio() {
+		return data_inicio;
 	}
-	public void setTempo(int tempo) {
-		this.tempo = tempo;
+	public void setData_inicio(Date data_inicio) {
+		this.data_inicio = data_inicio;
 	}
+	public Date getData_fim() {
+		return data_fim;
+	}
+	public void setData_fim(Date data_fim) {
+		this.data_fim = data_fim;
+	}
+	
 }

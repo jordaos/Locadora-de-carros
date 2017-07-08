@@ -105,13 +105,40 @@ body {
 }
 
 #organizaForm{
-    width: 40%;
+	width: 40%;
     margin-left: auto;
     margin-right: auto;
-	margin-top:20px;
-	padding: 20px;
-    background: rgba(70, 216, 255, 0.52);
+    margin-top: 70px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.22);
+    /*background: rgba(70, 216, 255, 0.52);*/
 }
+@media (min-width: 300px) {
+  #organizaForm{
+    width: 80%;
+  }
+}
+@media (min-width: 600px) {
+  #organizaForm{
+    width: 80%;
+  }
+}
+@media (min-width: 768px) {
+  #organizaForm{
+    width: 80%;
+  }
+}
+@media (min-width: 992px) {
+  #organizaForm{
+    width: 60%;
+  }
+}
+@media (min-width: 1200px) {
+  #organizaForm{
+    width: 40%;
+  }
+}
+
 
 #organizaForm a{
 	width: 40%;

@@ -1,5 +1,7 @@
 package br.com.ufc.locadora.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,16 +19,32 @@ public class ClienteController {
 	@Autowired
 	private ClienteService service;
 	
-	//Lista de clientes (Se o adm estiver logado)
-	@GetMapping("/")
-	public String listarTodos(Model model){
-		model.addAttribute("clientes", service.findAll());
-		return "listaClientes";
-	}
+	@Autowired
+	HttpSession session;
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String removeCliente(@PathVariable("id") long id) {
 		service.removerCliente(id);
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = "/editar", method = RequestMethod.GET)
+    public String mostrarCadastro(Model model) {
+		Cliente cliente = (Cliente) session.getAttribute("cliente");
+		if(cliente == null){
+			return "redirect:/login";
+		}
+		model.addAttribute("cliente", cliente);
+        return "user/editar_perfil";
+    }
+	
+	@RequestMapping(value = "/editar", method = RequestMethod.POST)
+    public String cadastrar(Cliente nvCliente) {
+		Cliente cliente = (Cliente) session.getAttribute("cliente");
+		if(cliente == null){
+			return "redirect:/login";
+		}
+		service.atualizarCliente(cliente, nvCliente);
+		return "redirect:/";
+    }
 }

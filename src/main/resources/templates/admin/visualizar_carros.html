@@ -12,13 +12,13 @@
     <title>Locadora de carros</title>
 
     <!-- Bootstrap core CSS -->
-    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link th:href="@{css/dashboard.css}" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -33,7 +33,7 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -42,41 +42,99 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">AloCAR</a>
+          <a class="navbar-brand" href="#">ALOCAR - ADM</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/cadastrar">Cadastre-se</a></li>
-            <li><a href="/login">Log in</a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#">SAIR</a></li>
           </ul>
         </div>
       </div>
     </nav>
-
-    <div class="container-fluid">
+      
+	<div class="container-fluid">
       <div class="row">
-        
-			<div id="organizaForm">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Cadastrar carros</a></li>
+            <li><a href="#">Visualizar carro</a></li>
+            <li><a href="#">Visualizar alugueis</a></li>
+          </ul>
+      
+        </div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		
+		<div class="container">
+			
+			<div class="container-fluid">
+      <div class="row">
+        <div id="organizaLista">
 
-				<form id="formExemplo" data-toggle="validator" role="form" method="POST" action="/login">
-				  
-				  <div class="form-group">
-					<label for="inputEmail" class="control-label">Email</label>
-					<input id="inputEmail" class="form-control" placeholder="Digite seu E-mail" type="email" name="email">
-				  </div>
+			  <h2 class="sub-header">Lista de carros</h2>
+			  <div class="table-responsive">
+				<table class="table table-striped">
+				  <thead>
+					<tr>
+					  <th>Codigo</th>
+					  <th>Marca</th>
+					  <th>Modelo</th>
+					  <th>Ano</th>
+					  <th>Preço por dia</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>1</td>
+					  <td>FIAT</td>
+					  <td>Uno</td>
+					  <td>2004</td>
+					  <td>R$ 200,00</td>
+					</tr>
+					<tr>
+					  <td>2</td>
+					  <td>FIAT</td>
+					  <td>Uno</td>
+					  <td>2004</td>
+					  <td>R$ 200,00</td>
+					</tr>
+					<tr>
+					  <td>3</td>
+					  <td>FIAT</td>
+					  <td>Uno</td>
+					  <td>2004</td>
+					  <td>R$ 200,00</td>
+					</tr>
+					<tr>
+					  <td>4</td>
+					  <td>FIAT</td>
+					  <td>Uno</td>
+					  <td>2004</td>
+					  <td>R$ 200,00</td>
+					</tr>
+					
 
-				  <div class="form-group">
-					<label for="inputPassword" class="control-label">Senha</label>
-					<input type="password" class="form-control" id="inputPassword" placeholder="Digite sua Senha..." name="senha">
-				  </div>
-				  
-
-				  
-				  <button type="submit" class="btn btn-primary">Entrar</button>
-				</form>
-			</div>
+				  </tbody>
+				</table>
+			  </div>
+		</div>
       </div>
     </div>
+
+
+
+		</div> <!-- /container -->
+		</div>
+		
+       </div>
+    </div>
+
+		  
+
+		</div> <!-- /container -->
+	</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

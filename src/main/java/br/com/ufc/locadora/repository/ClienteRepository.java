@@ -10,4 +10,5 @@ public interface ClienteRepository extends CrudRepository<Cliente, Long>{
 	
 	Cliente findByEmail(String email);
 	
+	Cliente findByEmailAndSenha(String email, String senha);
 }
