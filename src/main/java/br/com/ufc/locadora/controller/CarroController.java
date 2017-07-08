@@ -77,7 +77,7 @@ public class CarroController {
     }
 	
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
-    public String mostrarEditar(int id, Model model) {
+    public String mostrarEditar(long id, Model model) {
 		Cliente cliente = (Cliente) session.getAttribute("cliente");
 		if(cliente == null){
 			return "redirect:/login";
