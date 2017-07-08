@@ -22,8 +22,24 @@ public class ClienteController {
 	@Autowired
 	HttpSession session;
 	
+	@GetMapping("/all")
+	public String index(Model model){
+		Cliente cliente = (Cliente) session.getAttribute("cliente");
+		if(cliente == null){
+			return "redirect:/login";
+		}
+		if(!cliente.isAdmin()){
+			return "redirect:/403";
+		}
+		return "admin/visualizar_clientes";
+	}
+	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String removeCliente(@PathVariable("id") long id) {
+		Cliente cliente = (Cliente) session.getAttribute("cliente");
+		if(cliente == null){
+			return "redirect:/login";
+		}
 		service.removerCliente(id);
 		return "redirect:/";
 	}
