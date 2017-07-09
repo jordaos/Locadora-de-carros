@@ -77,7 +77,7 @@ public class CarroController {
     }
 	
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
-    public String mostrarEditar(long id, Model model) {
+    public String mostrarEditar(@PathVariable("id") long id, Model model) {
 		Cliente cliente = (Cliente) session.getAttribute("cliente");
 		if(cliente == null){
 			return "redirect:/login";
@@ -86,7 +86,7 @@ public class CarroController {
 			return "redirect:/403";
 		}
 		model.addAttribute("carro", service.findCarroById(id));
-        return "editar_carro";
+        return "admin/editar_carro";
     }
 	
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.POST)
@@ -99,6 +99,6 @@ public class CarroController {
 			return "redirect:/403";
 		}
         service.saveCarro(carro);
-        return "redirect:/editar";
+        return "redirect:/carros/all";
     }
 }

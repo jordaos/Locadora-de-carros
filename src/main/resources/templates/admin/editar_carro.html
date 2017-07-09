@@ -43,7 +43,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">ALOCAR - ADM</a>
+				<a class="navbar-brand" href="/">AloCAR</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -69,8 +69,9 @@
 
 				<div class="container">
 
-					<form class="form-signin" method="POST" action="/carros/editar">
+					<form class="form-signin" method="POST" th:action="@{'/carros/editar/' + ${carro.id}}" >
 						<h2 class="form-signin-heading">CADASTRAR CARRO</h2>
+							<input type="hidden" th:value="${carro.id}"/>
 							<input type="text" id="inputMarca" class="form-control"
 							name="marca" placeholder="Marca" required autofocus th:value="${carro.marca}"> 
 							<input
@@ -83,8 +84,8 @@
 							type="text" id="inputAno" class="form-control" name="ano"
 							placeholder="Ano" required th:value="${carro.ano}"> 
 							<input type="text"
-							id="inputPreço" class="form-control" name="preco"
-							placeholder="Preço" required th:value="${carro.preco}">
+							id="inputPreço" class="form-control" name="preco_dia"
+							placeholder="Preço" required th:value="${carro.preco_dia}">
 						<textarea type="text" id="inputDescricao" class="form-control"
 							name="descricao" required autofocus rows="7" cols="5"
 							placeholder="Descrição" th:text="${carro.descricao}"></textarea>

@@ -12,17 +12,17 @@
 <title>Locadora de carros</title>
 
 <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+<link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="css/dashboard.css" rel="stylesheet">
+<link href="/css/dashboard.css" rel="stylesheet">
 
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<script src="js/ie-emulation-modes-warning.js"></script>
+<script src="/js/ie-emulation-modes-warning.js"></script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -33,7 +33,8 @@
 
 <body>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" layout:fragment="nav">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -58,27 +59,38 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li><a href="/">Visualizar alugueis</a></li>
-					<li class="active"><a href="/alugar">Realizar aluguel</a></li>
+					<li><a href="/carros/all">Carros</a></li>
+					<li class="active"><a href="/cliente/all">Clientes</a></li>
 				</ul>
 
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-				<div class="container">
+				<div class="">
+				<label><a href="/carros/cadastrar">Clientes</a></label>
 
-					<form class="form-signin" method="POST" action="/alugar">
-						<h2 class="form-signin-heading">Alugar carro</h2>
-						<label>Carro:</label> <select class="form-control" name="carro">
-							<option>Selecione</option>
-							<option th:each="carro : ${carros}" th:value="${carro.id}"
-								th:text="${carro.modelo}"></option>
-						</select> <label>Data do aluguel:</label> <input type="text"
-							name="data_inicio" class="form-control" /> <label>Data de
-							entrega:</label> <input type="text" name="data_fim" class="form-control" />
-						<br>
-						<button class="btn btn-lg btn-primary btn-block" type="submit">Enviar</button>
-					</form>
+					<table class="table table-striped">
+				  <thead>
+					<tr>
+					  <th>Codigo</th>
+					  <th>Nome</th>
+					  <th>E-mail</th>
+					  <th>Endereço</th>
+					  <th>Ações</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr th:each="cli : ${clientes}">
+					    <td th:text="${cli.id}">0</td>
+					    <td th:text="${cli.nome}">nome</td>
+					    <td th:text="${cli.email}">name@domain.com</td>
+					    <td th:text="${cli.endereco}">endereco</td>
+					    <td>
+					    	<a th:href="@{'/cliente/delete/' + ${cli.id}}">Apagar</a>
+					    </td>
+					  </tr>
+				  </tbody>
+				</table>
 
 				</div>
 				<!-- /container -->
@@ -99,16 +111,10 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-	<script src="js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
 	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-	<script src="js/vendor/holder.min.js"></script>
+	<script src="/js/vendor/holder.min.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="js/ie10-viewport-bug-workaround.js"></script>
-
-	<script type="text/javascript">
-         $(function () {
-             $('#datetimepicker1').datetimepicker();
-         });
-     </script>
+	<script src="/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

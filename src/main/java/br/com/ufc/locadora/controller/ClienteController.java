@@ -31,6 +31,8 @@ public class ClienteController {
 		if(!cliente.isAdmin()){
 			return "redirect:/403";
 		}
+		model.addAttribute("cliente", cliente);
+		model.addAttribute("clientes", service.findAll());
 		return "admin/visualizar_clientes";
 	}
 	
@@ -40,8 +42,11 @@ public class ClienteController {
 		if(cliente == null){
 			return "redirect:/login";
 		}
+		if(!cliente.isAdmin()){
+			return "redirect:/403";
+		}
 		service.removerCliente(id);
-		return "redirect:/";
+		return "redirect:/cliente/all";
 	}
 	
 	@RequestMapping(value = "/editar", method = RequestMethod.GET)
