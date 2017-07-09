@@ -41,34 +41,34 @@
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
 					<li><a href="/carros/all">Carros</a></li>
-					<li class="active"><a href="/cliente/all">Clientes</a></li>
-					<li><a href="/aluguel/all">Alugueis</a></li>
+					<li><a href="/cliente/all">Clientes</a></li>
+					<li class="active"><a href="/aluguel/all">Alugueis</a></li>
 				</ul>
 
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 				<div class="">
-				<label><a href="/carros/cadastrar">Clientes</a></label>
+				<label><a href="/carros/cadastrar">Cadastrar carro</a></label>
 
 					<table class="table table-striped">
 				  <thead>
 					<tr>
 					  <th>Codigo</th>
-					  <th>Nome</th>
-					  <th>E-mail</th>
-					  <th>Endereço</th>
+					  <th>Carro</th>
+					  <th>Cliente</th>
+					  <th>Devolvido</th>
 					  <th>Ações</th>
 					</tr>
 				  </thead>
 				  <tbody>
-					<tr th:each="cli : ${clientes}">
-					    <td th:text="${cli.id}">0</td>
-					    <td th:text="${cli.nome}">nome</td>
-					    <td th:text="${cli.email}">name@domain.com</td>
-					    <td th:text="${cli.endereco}">endereco</td>
+					<tr th:each="aluguel : ${alugueis}">
+					    <td th:text="${aluguel.id}">0</td>
+					    <td th:text="${aluguel.carro.modelo}"></td>
+					    <td th:text="${aluguel.cliente.nome}"></td>
+					    <td th:text="${aluguel.devolvido} ? 'Devolvido' : 'Não devolvido'"></td>
 					    <td>
-					    	<a th:href="@{'/cliente/delete/' + ${cli.id}}">Apagar</a>
+					    	<a th:if="${!aluguel.devolvido}" th:href="@{'/aluguel/devolver/' + ${aluguel.id}}">Devolver</a>
 					    </td>
 					  </tr>
 				  </tbody>

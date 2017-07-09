@@ -1,0 +1,4 @@
+.form-group > span, .error-form{
+	color: red;
+	font-size: 11px;
+}

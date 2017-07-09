@@ -32,6 +32,9 @@ public class Aluguel {
 	@Temporal(TemporalType.DATE)
     private Date data_fim;
 	
+	@NotNull
+	private boolean devolvido = false;
+	
 	public Aluguel(Carro carro, Cliente cliente, Date data_inicio, Date data_fim){
 		this.carro = carro;
 		this.cliente = cliente;
@@ -69,5 +72,12 @@ public class Aluguel {
 	public void setData_fim(Date data_fim) {
 		this.data_fim = data_fim;
 	}
+	public boolean isDevolvido() {
+		return devolvido;
+	}
+	public void setDevolvido(boolean devolvido) {
+		this.devolvido = devolvido;
+	}
+	
 	
 }

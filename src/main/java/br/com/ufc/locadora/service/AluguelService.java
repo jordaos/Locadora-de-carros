@@ -34,4 +34,10 @@ public class AluguelService {
 	public Iterable<Aluguel> getByCliente(Cliente cliente){
 		return aluguelRepository.findByCliente(cliente);
 	}
+	
+	public void devolver(long id){
+		Aluguel aluguel = aluguelRepository.findById(id);
+		aluguel.setDevolvido(true);
+		aluguelRepository.save(aluguel);
+	}
 }

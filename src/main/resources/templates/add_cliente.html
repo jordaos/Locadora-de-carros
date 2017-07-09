@@ -8,11 +8,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
+    
+	
 
     <title>Locadora de carros</title>
 
     <!-- Bootstrap core CSS -->
     <link th:href="@{css/bootstrap.min.css}" rel="stylesheet">
+    
+    <link th:href="@{css/style.css}" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -33,58 +37,46 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">AloCAR</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/cadastrar">Cadastre-se</a></li>
-            <li><a href="/login">Log in</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <nav th:replace="fragments/nav :: nav_out"></nav>
 
     <div class="container-fluid">
       <div class="row">
         
 			<div id="organizaForm">
-				<form id="formExemplo" data-toggle="validator" role="form" action="/cadastrar" method="POST">
+				<form id="form_cadastro_cliente" data-toggle="validator" role="form" action="/cadastrar" method="POST">
 				  <div class="form-group">
-					<label for="textNome" class="control-label">Nome</label>
-					<input id="textNome" class="form-control" placeholder="Digite seu Nome..." type="text" name="nome">
+					<label for="nome" class="control-label">Nome</label>
+					<input id="nome" class="form-control" placeholder="Digite seu Nome..." type="text" name="nome">
+					<span id="span_nome"></span>
+					
 				  </div>
 				  
 				  <div class="form-group">
-					<label for="inputEmail" class="control-label">E-mail</label>
-					<input id="inputEmail" class="form-control" placeholder="Digite seu E-mail" type="email" name="email">
+					<label for="email" class="control-label">E-mail</label>
+					<input id="email" class="form-control" placeholder="Digite seu E-mail" type="email" name="email">
+					<span id="span_email"></span>
 				  </div>
 
 				  <div class="form-group">
-					<label for="inputPassword" class="control-label">Endereço</label>
-					<input type="text" class="form-control" id="inputPassword" placeholder="Digite seu endereço" name="endereco">
+					<label for="endereco" class="control-label">Endereço</label>
+					<input type="text" class="form-control" id="endereco" placeholder="Digite seu endereço" name="endereco">
+					<span id="span_endereco"></span>
 				  </div>
 				  
 				  <div class="form-group">
-					<label for="inputPassword" class="control-label">Senha</label>
-					<input type="password" class="form-control" id="inputPassword" placeholder="Digite sua Senha..." name="senha">
+					<label for="senha" class="control-label">Senha</label>
+					<input type="password" class="form-control" id="senha" placeholder="Digite sua Senha..." name="senha">
+					<span id="span_senha"></span>
 				  </div>
 				  
 				  <div class="form-group">
-					<label for="inputConfirm" class="control-label">Confirme a Senha</label>
-					<input type="password" class="form-control" id="inputConfirm" placeholder="Confirme sua Senha...">
+					<label for="senha_repetida" class="control-label">Confirme a Senha</label>
+					<input type="password" class="form-control" id="senha_repetida" placeholder="Confirme sua Senha...">
+					<span id="span_senha_repetida"></span>
 				  </div>
 					<a href="#"><p>Deseja entrar no sistema? </p></a>
 				  
-				  <button type="submit" class="btn btn-primary">Entrar</button>
+				  <button type="submit" class="btn btn-primary">Cadastrar</button>
 				</form>
 			</div>
       </div>
@@ -100,5 +92,6 @@
     <script src="js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript" src="/js/cadastroCliente.js"></script>
   </body>
 </html>

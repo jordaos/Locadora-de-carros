@@ -33,27 +33,7 @@
 
 <body>
 
-
-	<nav class="navbar navbar-inverse navbar-fixed-top" layout:fragment="nav">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/">AloCAR</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/cliente/editar" th:text="${cliente.nome}">Nome</a></li>
-					<li><a href="/logout">Sair</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<nav th:replace="fragments/nav :: nav_in"></nav>
 
 	<div class="container-fluid">
 		<div class="row">
@@ -75,6 +55,7 @@
 								<th>Carro</th>
 								<th>Data de aluguel</th>
 								<th>Data de entrega</th>
+								<th>Entregue</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -84,6 +65,7 @@
 									th:text="${aluguel.carro.modelo}"></label></td>
 								<td th:text="${aluguel.data_inicio}">00/00/000</td>
 								<td th:text="${aluguel.data_fim}">00/00/000</td>
+								<td th:text="${aluguel.devolvido} ? 'Devolvido' : 'Não devolvido'"></td>
 							</tr>
 						</tbody>
 					</table>

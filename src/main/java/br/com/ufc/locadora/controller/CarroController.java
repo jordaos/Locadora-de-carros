@@ -52,7 +52,7 @@ public class CarroController {
 	}
 	
 	@RequestMapping(value = "/cadastrar", method = RequestMethod.GET)
-    public String mostrarCadastro() {
+    public String mostrarCadastro(Model model) {
 		Cliente cliente = (Cliente) session.getAttribute("cliente");
 		if(cliente == null){
 			return "redirect:/login";
@@ -60,11 +60,12 @@ public class CarroController {
 		if(!cliente.isAdmin()){
 			return "redirect:/403";
 		}
+		model.addAttribute("cliente", cliente);
         return "admin/cadastrar_carro";
     }
 	
 	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
-    public String cadastrar(Carro carro) {
+    public String cadastrar(Carro carro, Model model) {
 		Cliente cliente = (Cliente) session.getAttribute("cliente");
 		if(cliente == null){
 			return "redirect:/login";
@@ -72,6 +73,7 @@ public class CarroController {
 		if(!cliente.isAdmin()){
 			return "redirect:/403";
 		}
+		model.addAttribute("cliente", cliente);
 		service.saveCarro(carro);
 		return "redirect:/carros/cadastrar";
     }
@@ -85,6 +87,7 @@ public class CarroController {
 		if(!cliente.isAdmin()){
 			return "redirect:/403";
 		}
+		model.addAttribute("cliente", cliente);
 		model.addAttribute("carro", service.findCarroById(id));
         return "admin/editar_carro";
     }

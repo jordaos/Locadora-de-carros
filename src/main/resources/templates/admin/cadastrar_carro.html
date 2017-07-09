@@ -20,6 +20,23 @@
 <!-- Custom styles for this template -->
 <link href="/css/dashboard.css" rel="stylesheet">
 
+<script type="text/javascript" src="/js/jquery3.2.1.js">
+	
+</script>
+<script type="text/javascript" src="/js/jquery.maskedinput.js">
+	
+</script>
+
+
+<script>
+	$(function() {
+		$("#placa").mask("aaa-9999");
+		$("#preco").mask("9999.99");
+		$("#ano").mask("9999");
+
+	});
+</script>
+
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="/js/ie-emulation-modes-warning.js"></script>
@@ -33,28 +50,7 @@
 
 <body>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/">AloCAR</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#">SAIR</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<nav th:replace="fragments/nav :: nav_in"></nav>
 
 	<div class="container-fluid">
 		<div class="row">
@@ -62,6 +58,7 @@
 				<ul class="nav nav-sidebar">
 					<li><a href="/carros/all">Carros</a></li>
 					<li><a href="/cliente/all">Clientes</a></li>
+					<li><a href="/aluguel/all">Alugueis</a></li>
 				</ul>
 
 			</div>
@@ -69,24 +66,27 @@
 
 				<div class="container">
 
-					<form class="form-signin" method="POST" action="/carros/cadastrar">
-						<h2 class="form-signin-heading">CADASTRAR CARRO</h2>
-						<input type="text" id="inputMarca" class="form-control"
-							name="marca" placeholder="Marca" required autofocus> <input
-							type="text" id="inputModelo" class="form-control" name="modelo"
-							placeholder="Modelo" required autofocus>
-							<input
-							type="text" id="inputModelo" class="form-control" name="placa"
-							placeholder="Placa" required autofocus>
-							 <input
-							type="text" id="inputAno" class="form-control" name="ano"
-							placeholder="Ano" required> <input type="text"
-							id="inputPreço" class="form-control" name="preco_dia"
-							placeholder="Preço" required>
-						<textarea type="text" id="inputDescricao" class="form-control"
+					<form class="form-signin" method="POST" action="/carros/cadastrar"
+						id="form_cadastro_carro">
+						<h2 class="form-signin-heading">Cadastrar carro</h2>
+
+						<input type="text" id="placa" class="form-control" name="placa"
+							placeholder="XXX-0000" required> <span id="span_placa"></span>
+
+						<input type="text" id="marca" class="form-control" name="marca"
+							placeholder="Marca" required autofocus> <span
+							id="span_marca"></span> <input type="text" id="modelo"
+							class="form-control" name="modelo" placeholder="Modelo" required
+							autofocus> <span id="span_modelo"></span> <input
+							type="text" id="ano" class="form-control" name="ano"
+							placeholder="Ano" required> <span id="span_ano"></span> <input
+							type="text" id="preco" class="form-control" name="preco_dia"
+							placeholder="Preço" required> <span id="span_preco"></span>
+
+						<textarea type="text" id="descricao" class="form-control"
 							name="descricao" required autofocus rows="7" cols="5"
 							placeholder="Descrição"> </textarea>
-						<br> <br>
+						<span id="span_descricao"></span> <br> <br>
 						<button class="btn btn-lg btn-primary btn-block" type="submit">Entre</button>
 					</form>
 
@@ -106,13 +106,11 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 	<script src="/js/bootstrap.min.js"></script>
 	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 	<script src="/js/vendor/holder.min.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="/js/ie10-viewport-bug-workaround.js"></script>
+	<script src="/js/cadastroCliente.js"></script>
 </body>
 </html>

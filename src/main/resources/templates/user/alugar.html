@@ -12,17 +12,33 @@
 <title>Locadora de carros</title>
 
 <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="/css/style.css" rel="stylesheet">
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="css/dashboard.css" rel="stylesheet">
+<link href="/css/dashboard.css" rel="stylesheet">
 
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="js/ie-emulation-modes-warning.js"></script>
+
+	<script type="text/javascript" src="/js/jquery3.2.1.js"> </script>
+	<script type="text/javascript" src="/js/jquery.maskedinput.js"> </script>
+	
+	
+	<script>
+	
+		$(function(){
+			$("#data_inicio").mask("99/99/9999");
+			$("#data_fim").mask("99/99/9999");	
+		
+		});
+	
+	</script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -33,26 +49,7 @@
 
 <body>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/">AloCAR</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/cliente/editar" th:text="${cliente.nome}">Nome</a></li>
-					<li><a href="/logout">Sair</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<nav th:replace="fragments/nav :: nav_out"></nav>
 
 	<div class="container-fluid">
 		<div class="row">
@@ -67,15 +64,22 @@
 
 				<div class="container">
 
-					<form class="form-signin" method="POST" action="/alugar">
+					<form class="form-signin" method="POST" action="/alugar" id="form_alugar_carro">
 						<h2 class="form-signin-heading">Alugar carro</h2>
-						<label>Carro:</label> <select class="form-control" name="carro">
+						<label>Carro:</label> 
+						<select class="form-control" name="carro" id="carro">
 							<option>Selecione</option>
 							<option th:each="carro : ${carros}" th:value="${carro.id}"
 								th:text="${carro.modelo}"></option>
-						</select> <label>Data do aluguel:</label> <input type="text"
-							name="data_inicio" class="form-control" /> <label>Data de
-							entrega:</label> <input type="text" name="data_fim" class="form-control" />
+						</select> 
+						<span id="span_carro_selecionado" class="error-form"></span>
+						
+							<label>Data do aluguel:</label>
+							<input type="text" id="data_inicio" name="data_inicio" class="form-control" /> 
+							<span id="span_data_inicio" class="error-form"></span>
+							<label>Data de entrega:</label> 
+							<input type="text" id="data_fim" name="data_fim" class="form-control" />
+							<span id="span_data_fim" class="error-form"></span>
 						<br>
 						<button class="btn btn-lg btn-primary btn-block" type="submit">Enviar</button>
 					</form>
@@ -96,8 +100,6 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 	<script src="js/bootstrap.min.js"></script>
 	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
@@ -110,5 +112,7 @@
              $('#datetimepicker1').datetimepicker();
          });
      </script>
+	 
+	 <script type="text/javascript" src="/js/alugarCarro.js"></script>
 </body>
 </html>
